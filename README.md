@@ -14,6 +14,8 @@ It includes:
 - 🔹 Docker deployment (Hugging Face Spaces compatible)
 
 ---
+# Architecture
+![architecture diagram](arch.png)
 
 # 🚀 Features
 
