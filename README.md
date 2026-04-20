@@ -17,6 +17,9 @@ It includes:
 # Architecture
 ![architecture diagram](arch.png)
 
+# User Interface
+![User Interface](UI.png)
+
 # 🚀 Features
 
 ✅ Machine Learning-based house price prediction  
@@ -212,6 +215,8 @@ Machine Learning Projects
 # ⭐ If you found this useful
 
 Give the repo a star ⭐
+
+
 
 
 
