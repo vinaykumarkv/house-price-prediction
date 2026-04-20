@@ -1,2 +1,13 @@
-# house-price-prediction
-simple NN based predictor
+---
+title: House Price Prediction
+emoji: 🐠
+colorFrom: indigo
+colorTo: blue
+sdk: docker
+sdk_version: 6.12.0
+app_file: app.py
+pinned: false
+license: mit
+---
+
+Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference

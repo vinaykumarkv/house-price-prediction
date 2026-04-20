@@ -7,4 +7,4 @@ uvicorn app.api:app --host 0.0.0.0 --port 8000 --workers 1 &
 sleep 5
 
 # Start Streamlit on port 7860 (Hugging Face default exposed port)
-streamlit run app/dashboard.py --server.port 7860 --server.address 0.0.0.0 --server.headless true
+python app/app.py

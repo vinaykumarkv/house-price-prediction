@@ -1,28 +1,31 @@
 import gradio as gr
-import pandas as pd
-import numpy as np
-import pickle
-import os
+import requests
 
-# 1. Correct Path to your model
-model_path = os.path.join("models", "house_model.pkl")
-#API_URL = "http://127.0.0.1:8000/predict"
-
-with open(model_path, 'rb') as f:
-    model = pickle.load(f)
+# FastAPI endpoint
+API_URL = "http://127.0.0.1:8000/predict"
 
 def predict_price(sq_ft, rooms, age, dist):
-    input_df = pd.DataFrame({
-        'square_feet': [sq_ft],
-        'num_rooms': [rooms],
-        'age': [age],
-        'distance_to_city(km)': [dist]
-    })
-    
-    prediction = model.predict(input_df)
-    print(f"Model prediction output: {prediction}")  # Debugging line
-    price = float(prediction[0][0]) # Assuming array output
-    return f"${round(price, 2):,}"
+
+    payload = {
+        "square_feet": int(sq_ft),
+        "num_rooms": int(rooms),
+        "age": int(age),
+        "distance_to_city": int(dist)
+    }
+
+    try:
+        response = requests.post(API_URL, json=payload)
+
+        if response.status_code == 200:
+            result = response.json()
+            return result["price"]
+
+        else:
+            return f"API Error: {response.text}"
+
+    except Exception as e:
+        return f"Connection Error: {str(e)}"
+
 
 interface = gr.Interface(
     fn=predict_price,
@@ -37,4 +40,7 @@ interface = gr.Interface(
 )
 
 if __name__ == "__main__":
-    interface.launch(server_name="127.0.0.1", server_port=7860)
+    interface.launch(
+        server_name="0.0.0.0",
+        server_port=7860
+    )

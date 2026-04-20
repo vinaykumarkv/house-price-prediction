@@ -1,8 +1,9 @@
+fastapi
+uvicorn
 gradio
+requests
 pandas
 numpy
-tensorflow
 scikit-learn
-matplotlib
-seaborn
-pickle
+joblib
+lightgbm
